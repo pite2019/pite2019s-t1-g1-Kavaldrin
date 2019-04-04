@@ -23,6 +23,8 @@ class Matrix:
                     for j in range(self.size):
                         new_matrix.memory[i][j] = self.memory[i][j] + argument.memory[i][j]
                 return new_matrix
+            else:
+                raise TypeError()
         else:
             raise TypeError()
 
@@ -40,7 +42,9 @@ class Matrix:
                 for i in range(self.size):
                     for j in range(self.size):
                         self.memory[i][j] += argument.memory[i][j]
-            return self
+                return self
+            else:
+                raise TypeError()
 
     def __sub__(self, argument):
         if isinstance(argument, float) or isinstance(argument, int):
@@ -56,6 +60,8 @@ class Matrix:
                     for j in range(self.size):
                         new_matrix.memory[i][j] = self.memory[i][j] - argument.memory[i][j]
                 return new_matrix
+            else:
+                TypeError()
         else:
             raise TypeError()
 
@@ -63,7 +69,7 @@ class Matrix:
         return self - argument
 
     def __matmul__(self, argument):
-        if isinstance(argument, Matrix):
+        if isinstance(argument, Matrix) and self.size == argument.size:
             new_matrix = Matrix(self.size)
             for i in range(self.size):
                 for j in range(self.size):
