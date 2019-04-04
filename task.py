@@ -18,6 +18,11 @@ if __name__ == '__main__':
     matrix7 = matrix5 - matrix6
     print(matrix7)
 
+    matrix7 += matrix7
+    print(matrix7)
+    matrix7 += 2
+    print(matrix7)
+
     matrix8 = matrix7 @ matrix7
     print(matrix8)
 

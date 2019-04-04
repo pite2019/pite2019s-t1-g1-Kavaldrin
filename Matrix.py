@@ -29,6 +29,19 @@ class Matrix:
     def __radd__(self, argument):
         return self + argument
 
+    def __iadd__(self, argument):
+        if isinstance(argument, float) or isinstance(argument, int):
+            for i in range(self.size):
+                for j in range(self.size):
+                    self.memory[i][j] += argument
+            return self
+        elif isinstance(argument, Matrix) and argument.size == self.size:
+            if argument.size == self.size:
+                for i in range(self.size):
+                    for j in range(self.size):
+                        self.memory[i][j] += argument.memory[i][j]
+            return self
+
     def __sub__(self, argument):
         if isinstance(argument, float) or isinstance(argument, int):
             new_matrix = Matrix(self.size)
